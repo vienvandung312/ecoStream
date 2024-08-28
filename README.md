@@ -43,7 +43,7 @@ The platform will ingest data from IoT devices such as weather stations and air 
 
 ### 3. Data Storage:
 
-#### Apache Cassandra:
+#### AWS S3:
 - Use: Store raw, unprocessed data for quick retrieval and backup.
 
 #### Amazon Redshift:

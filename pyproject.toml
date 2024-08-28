@@ -1,12 +1,19 @@
 [tool.poetry]
-name = "ecostream"
+name = "ecoStream"
 version = "0.1.0"
 description = ""
 authors = ["Dung Vien <vienvandung312@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "app" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pandas = "^2.2.2"
+python-dotenv = "^1.0.1"
+requests = "^2.32.3"
+setuptools = "^74.0.0"
 
 
 [build-system]
