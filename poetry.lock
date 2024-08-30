@@ -122,6 +122,17 @@ files = [
 ]
 
 [[package]]
+name = "kafka"
+version = "1.3.5"
+description = "Pure Python client for Apache Kafka"
+optional = false
+python-versions = "*"
+files = [
+    {file = "kafka-1.3.5-py2.py3-none-any.whl", hash = "sha256:35a49e9a432f6792aad48b2ab09d03867357aaa06eacba2678b7fd0808156e5c"},
+    {file = "kafka-1.3.5.tar.gz", hash = "sha256:ffb3348cd918c31344b1a2eb61f692cbc423c83b1b06466a86de3db8a3f6a018"},
+]
+
+[[package]]
 name = "numpy"
 version = "2.1.0"
 description = "Fundamental package for array computing in Python"
@@ -373,4 +384,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "075d23f858192b9e68d4f82f06f44df77880112f12cef0cf71dda644efe33bf8"
+content-hash = "452f5fe0d27391e5afe7772ff26ba6f09f4d1babdb6de86e9a14f0bc35808490"
