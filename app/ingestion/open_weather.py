@@ -12,4 +12,6 @@ def get_geocoding_by_name(city_name: str) -> dict:
     response = requests.get(f"{GEOCODING_API_URL.format(city_name=city_name, api_key=OPEN_WEATHER_API_KEY)}")
     return response.json()
 
-print(get_geocoding_by_name("Ho Chi Minh City"))
+def get_weather_by_coordinates(lat: float, lon: float) -> list[dict]:
+    response = requests.get(f"{OPEN_WEATHER_API_URL.format(endpoint='weather', lat=lat, lon=lon, api_key=OPEN_WEATHER_API_KEY)}")
+    return response.json()
