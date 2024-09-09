@@ -7,6 +7,6 @@ if __name__ == "__main__":
     kafka_producer.send_message(
         bootstrap_servers="localhost:9092",
         topic="open_weather",
-        message=str(weather_data)
+        key=str(weather_data['id']),
+        value=str(weather_data)
     )
-

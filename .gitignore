@@ -8,3 +8,6 @@ env/
 *.pyc
 *.pyo
 __pycache__/
+
+# data files
+data/
