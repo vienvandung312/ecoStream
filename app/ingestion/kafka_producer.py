@@ -1,7 +1,10 @@
+import json
 from kafka import KafkaProducer
 
-def send_message(bootstrap_servers:str, topic:str, message:str):
-    producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
-    producer.send(topic, message.encode('utf-8'))
-    producer.flush()
-    producer.close()
+class KafkaProducerService: 
+    def __init__(self, bootstrap_servers: str) -> None:
+        self.producer = KafkaProducer(bootstrap_servers=bootstrap_servers, value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+
+    def send_message(self, topic: str, message: dict) -> None:
+        self.producer.send(topic, value=message)
+        self.producer.flush()
