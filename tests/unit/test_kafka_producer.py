@@ -37,3 +37,27 @@ def test_add_bootstrap_servers_with_multiple_servers():
     service = KafkaProducerService()
     service.add_bootstrap_servers('localhost:9092, localhost:9093, localhost:9094')
     assert service.config.get('bootstrap.servers') == 'localhost:9092,localhost:9093,localhost:9094'
+
+def test_deserialize_message_with_normal_input():
+    service = KafkaProducerService()
+    service.add_bootstrap_servers('localhost:9092')
+    message = {'key': 'value'}
+    serialized_message = service._serialize(message)
+    deserialized_message = service._deserialize(serialized_message)
+    assert deserialized_message == message
+
+def test_deserialize_message_with_empty_input():
+    service = KafkaProducerService()
+    service.add_bootstrap_servers('localhost:9092')
+    message = b''
+    with pytest.raises(Exception):
+        service._deserialize(message)
+    
+    message = None
+    with pytest.raises(Exception):
+        service._deserialize(message)
+
+def test_repr():
+    service = KafkaProducerService()
+    service.add_bootstrap_servers('localhost:9092')
+    assert service.__repr__() == 'KafkaProducerService(conf=localhost:9092)'

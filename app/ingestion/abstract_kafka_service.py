@@ -8,16 +8,18 @@ class AbstractKafkaService(ABC):
         return json.dumps(data).encode('utf-8')
     
     def _deserialize(self, data: bytes) -> dict:
+        if not data:
+            raise Exception(f'{data.__repr__()} is not deserializable', )
         return json.loads(data.decode('utf-8'))
     
     @abstractmethod
     def _delivery_report(self, err, msg):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def add_bootstrap_servers(self, servers: str):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def __repr__(self):
-        pass
+        raise NotImplementedError
