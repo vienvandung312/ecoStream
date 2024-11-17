@@ -1,10 +1,5 @@
-# virtualenv
-venv/
-.venv/
-env/
-
-
-# python bytecode
+.venv
+venv*
 *.pyc
-*.pyo
-__pycache__/
+
+.coverage
