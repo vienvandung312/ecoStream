@@ -5,15 +5,21 @@ class KafkaProducerService(AbstractKafkaService):
     def __init__(self):
         self.config = {
             'bootstrap.servers': None,
-            'key.serializer': str.encode('utf-8'),
+            'key.serializer': str.encode,
             'value.serializer': self._serialize,
         }
+        self.producer = None
     
     def add_bootstrap_servers(self, servers: str) -> None:
-        if not self.config.get('bootstrap.servers'):
-            self.config.__setitem__('bootstrap.servers', servers)
+        servers = servers.replace(' ', '')
+        current_bootstrap_servers = self.config.get('bootstrap.servers')
+        
+        if current_bootstrap_servers:
+            bootstrap_servers = f"{current_bootstrap_servers},{servers}"
         else:
-            self.config.get('bootstrap.servers').split(',').append(servers).join(',')
+            bootstrap_servers = servers
+        
+        self.config['bootstrap.servers'] = bootstrap_servers
         self.producer = SerializingProducer(self.config)
 
     def __repr__(self):
@@ -27,4 +33,3 @@ class KafkaProducerService(AbstractKafkaService):
             print(f'Message delivery failed: {err}')
         else:
             print(f'Message delivered to {msg.topic()} [{msg.partition()}]')
-    
