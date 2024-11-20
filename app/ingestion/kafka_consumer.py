@@ -47,3 +47,6 @@ class KafkaConsumerService(AbstractKafkaService):
             print(f'Message consumption failed: {err}')
         else:
             print(f'Message consumed: {msg.topic()} [{msg.partition()}]')
+
+    def set_group_id(self, group_id: str):
+        self.config['group.id'] = group_id
