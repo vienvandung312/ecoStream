@@ -1,9 +1,6 @@
 import requests 
-from app.ingestion.abstract_api import AbstractAPI
-from app.exceptions import MissingParameterException
 
-
-class OpenMeteoAPI(AbstractAPI):
+class OpenMeteoAPI:
     def __init__(self):
         self.url  = 'https://api.open-meteo.com'
         self.version = 'v1'

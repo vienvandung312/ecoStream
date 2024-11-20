@@ -1,4 +1,3 @@
-from unittest.mock import patch
 from app.ingestion.open_meteo_api import OpenMeteoAPI
 
 
@@ -17,4 +16,4 @@ class TestOpenMeteoAPI():
         assert 'current' in response
         assert 'hourly' in response
 
-        
+         
